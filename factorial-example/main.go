@@ -7,11 +7,19 @@ import (
 func main() {
 	var num int
 	fmt.Print("Enter a number: ")
-	fmt.Scan(&num)
+	_, err := fmt.Scan(&num)
 
-	if num > 0 {
-		fmt.Printf("Factorial of %d is %d\n", num, factorial(num))
+	if err != nil {
+		fmt.Println("Invalid input.")
+		return
 	}
+
+	if num < 0 {
+		fmt.Println("Invalid negative number.")
+		return
+	}
+
+	fmt.Printf("Factorial of %d is %d\n", num, factorial(num))
 }
 
 // factorial calculates the factorial of a given number using recursion
